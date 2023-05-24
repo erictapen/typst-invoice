@@ -74,7 +74,7 @@
     columns: (1fr, auto, auto, 1fr),
     align: ((column, row) => if column >= 2 { right } else { left} ),
     hlinex(stroke: (thickness: 0.5pt)),
-    [*Pos.*], [*Description*], [], [*Preis*],
+    [*Pos.*], [*Beschreibung*], [], [*Preis*],
     hlinex(),
     ..items,
     hlinex(),
