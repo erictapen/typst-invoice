@@ -1,0 +1,28 @@
+invoice-nr = "2023-001"
+date = "24.05.2023"
+vat = 0.19
+
+items = [
+  { description = "The first service provided", price = 200 },
+  { description = "The second service provided", price = 150.2 },
+]
+
+[author]
+name = "Kerstin Humm"
+street = "Straße der Privatsphäre und Stille 1"
+zip = "54321"
+city = "Potsdam"
+tax_nr = "12345/67890"
+
+[recipient]
+name = "Erika Mustermann"
+street = "Musterallee"
+zip = "12345"
+city = "Musterstadt"
+
+[bank_account]
+name = "Todd Name"
+bank = "Deutsche Postbank AG"
+iban = "DE 5463 2168 7213 2157 98"
+bic = "PBNKDEFF"
+
