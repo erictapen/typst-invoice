@@ -20,9 +20,12 @@
           ${pkgs.typst}/bin/typst compile invoice.typ $out/invoice.pdf
         '';
 
-        checks.reuse = pkgs.runCommand "reuse-check" { } ''
+        checks = {
+          reuse = pkgs.runCommand "reuse-check" { } ''
             ${pkgs.reuse}/bin/reuse --root ${self} lint && touch $out
           '';
+          build = self.packages."${system}".default;
+        };
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
