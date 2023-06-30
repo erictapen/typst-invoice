@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Kerstin Humm <kerstin@erictapen.name>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 invoice-nr = "2023-001"
 date = "24.05.2023"
 vat = 0.19

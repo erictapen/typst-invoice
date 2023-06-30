@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 PgBiel <9021226+PgBiel@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 // Welcome to tablex!
 // Feel free to contribute with any features you think are missing.
 

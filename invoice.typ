@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 Kerstin Humm <kerstin@erictapen.name>
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #import "tablex.typ": gridx, hlinex
 
 #set text(lang: "de", region: "DE")

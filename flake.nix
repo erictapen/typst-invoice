@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Kerstin Humm <kerstin@erictapen.name>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 {
   description = "Typst template for invoices";
 
@@ -16,8 +20,15 @@
           ${pkgs.typst}/bin/typst compile invoice.typ $out/invoice.pdf
         '';
 
+        checks.reuse = pkgs.runCommand "reuse-check" { } ''
+            ${pkgs.reuse}/bin/reuse --root ${self} lint && touch $out
+          '';
+
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [ typst ];
+          buildInputs = with pkgs; [
+            typst
+            reuse
+          ];
         };
 
       });
