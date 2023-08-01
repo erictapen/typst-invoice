@@ -30,6 +30,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
             typst
+            typstfmt
             reuse
           ];
         };

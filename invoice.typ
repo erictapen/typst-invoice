@@ -17,15 +17,15 @@
 // https://github.com/typst/typst/issues/180#issuecomment-1484069775
 #let format_currency(number) = {
   let precision = 2
-  assert(precision>0)
+  assert(precision > 0)
   let s = str(calc.round(number, digits: precision))
   let after_dot = s.find(regex("\..*"))
-  if after_dot==none {
-    s=s+"."
-    after_dot="."
+  if after_dot == none {
+    s = s + "."
+    after_dot = "."
   }
-  for i in range(precision - after_dot.len()+1){
-    s=s+"0"
+  for i in range(precision - after_dot.len() + 1){
+    s = s + "0"
   }
   // fake de locale
   s.replace(".", ",")
@@ -34,10 +34,10 @@
 #set text(number-type: "old-style")
 
 #smallcaps[
-  *#details.author.name* •
-  #details.author.street •
-  #details.author.zip #details.author.city
-]
+    *#details.author.name* •
+    #details.author.street •
+    #details.author.zip #details.author.city
+  ]
 
 #v(1em)
 
@@ -58,16 +58,15 @@
 ]
 
 #heading[
-  Rechnung \##details.invoice-nr
-]
+    Rechnung \##details.invoice-nr
+  ]
 
 #let items = details.items.enumerate().map(
-    ((id, item)) => (
-      [#str(id + 1).],
-      [#item.description],
-      [#format_currency(item.price)€]
-    )
-  ).flatten()
+  ((id, item)) => (
+    [#str(id + 1).],
+    [#item.description],
+    [#format_currency(item.price)€],
+  )).flatten()
 
 #let total = details.items.map((item) => item.at("price")).sum()
 
@@ -75,32 +74,35 @@
   #set text(number-type: "lining")
   #gridx(
     columns: (auto, 10fr, auto),
-    align: ((column, row) => if column == 1 { left } else { right } ),
+    align: ((column, row) => if column == 1 { left } else { right }),
     hlinex(stroke: (thickness: 0.5pt)),
-    [*Pos.*], [*Beschreibung*], [*Preis*],
+    [*Pos.*],
+    [*Beschreibung*],
+    [*Preis*],
     hlinex(),
     ..items,
     hlinex(),
-    [], [
+    [],
+    [
       #set align(end)
       Summe:
-    ], [#format_currency((1.0 - details.vat) * total)€],
-
+    ],
+    [#format_currency((1.0 - details.vat) * total)€],
     hlinex(start: 2),
-
-    [], [
+    [],
+    [
       #set text(number-type: "old-style")
       #set align(end)
       #str(details.vat * 100)% Mehrwertsteuer:
-    ], [#format_currency(details.vat * total)€],
-
+    ],
+    [#format_currency(details.vat * total)€],
     hlinex(start: 2),
-
-    [], [
+    [],
+    [
       #set align(end)
       *Gesamt:*
-    ], [*#format_currency(total)€*],
-
+    ],
+    [*#format_currency(total)€*],
     hlinex(start: 2),
   )
 ]
