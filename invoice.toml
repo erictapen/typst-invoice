@@ -7,7 +7,7 @@ date = "24.05.2023"
 vat = 0.19
 
 items = [
-  { description = "The first service provided", price = 200 },
+  { description = "The first service provided. The first service provided. The first service provided", price = 200 },
   { description = "The second service provided", price = 150.2 },
 ]
 

@@ -17,7 +17,7 @@
 
         packages.default = pkgs.runCommand "typst-invoice" { } ''
           mkdir -p $out
-          ${pkgs.typst}/bin/typst compile invoice.typ $out/invoice.pdf
+          ${pkgs.typst}/bin/typst compile ${self}/invoice.typ $out/invoice.pdf
         '';
 
         checks = {

@@ -65,7 +65,6 @@
     ((id, item)) => (
       [#str(id + 1).],
       [#item.description],
-      [],
       [#format_currency(item.price)€]
     )
   ).flatten()
@@ -75,22 +74,34 @@
 #[
   #set text(number-type: "lining")
   #gridx(
-    columns: (1fr, auto, auto, 1fr),
-    align: ((column, row) => if column >= 2 { right } else { left} ),
+    columns: (auto, 10fr, auto),
+    align: ((column, row) => if column == 1 { left } else { right } ),
     hlinex(stroke: (thickness: 0.5pt)),
-    [*Pos.*], [*Beschreibung*], [], [*Preis*],
+    [*Pos.*], [*Beschreibung*], [*Preis*],
     hlinex(),
     ..items,
     hlinex(),
-    [], [], [ Summe:], [#format_currency((1.0 - details.vat) * total)€],
-    hlinex(start: 3),
-    [], [], [
+    [], [
+      #set align(end)
+      Summe:
+    ], [#format_currency((1.0 - details.vat) * total)€],
+
+    hlinex(start: 2),
+
+    [], [
       #set text(number-type: "old-style")
+      #set align(end)
       #str(details.vat * 100)% Mehrwertsteuer:
     ], [#format_currency(details.vat * total)€],
-    hlinex(start: 3),
-    [], [], [ *Gesamt:* ], [*#format_currency(total)€*],
-    hlinex(start: 3),
+
+    hlinex(start: 2),
+
+    [], [
+      #set align(end)
+      *Gesamt:*
+    ], [*#format_currency(total)€*],
+
+    hlinex(start: 2),
   )
 ]
 
