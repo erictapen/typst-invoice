@@ -122,8 +122,8 @@
 #[
   #set par(leading: 0.40em)
   #set text(number-type: "lining")
-  #details.bank_account.name \
-  Kreditinstitut #details.bank_account.bank \
+  Kontoinhaberin: #details.bank_account.name \
+  Kreditinstitut: #details.bank_account.bank \
   IBAN: *#details.bank_account.iban* \
   BIC: #details.bank_account.bic
 ]
