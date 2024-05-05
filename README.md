@@ -10,7 +10,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 An template for writing invoices, which strives to be almost a copy of the [beautiful LaTex template by @mrzool](https://github.com/mrzool/invoice-boilerplate/).
 
-The data for an individual invoice is stored in a TOML file (`invoice.toml`), so the important fields are easiliy identifiable and can even be produced by another program.
+The data for an individual invoice is stored in a TOML file (`invoice.toml`), so the important fields are easily identifiable and can even be produced by another program.
 
 ## Specifics
 
