@@ -1,27 +1,23 @@
-<!--
-SPDX-FileCopyrightText: 2023 Kerstin Humm <kerstin@erictapen.name>
+# German invoice template
 
-SPDX-License-Identifier: GPL-3.0-or-later
--->
+A template for writing invoices, inspired by the [beautiful LaTeX template by @mrzool.](https://github.com/mrzool/invoice-boilerplate/)
 
-# Typst invoice template
 
-![](preview.png)
+## Scope
 
-An template for writing invoices, which strives to be almost a copy of the [beautiful LaTex template by @mrzool](https://github.com/mrzool/invoice-boilerplate/).
+This template should work well for freelancers and small companies in the german market, that don't have an existing system in place for order tracking. Or to put it the other way round; This template is for people that mostly have to fulfill outside requirements with their invoices and don't so much benefit from extensive tracking themselfes.
 
-The data for an individual invoice is stored in a TOML file (`invoice.toml`), so the important fields are easily identifiable and can even be produced by another program.
 
-## Specifics
+## Features
 
-The entire template strives to work for the german region and locale, which is aquired through hacks, as Typst doesn't seem to have good support for locales yet. The reason for that is just that I personally needed it like this. You'll also find some other details that only fit my specific use case, e.g. the reference to the german § 19 UStG.
+- [X] multiple invoice items
+- [X] configurable VAT
+- [X] configurabe § 19 UStG (Kleinunternehmerregelung) note
+- [X] employs both lining and old-style number types, depending on the application
+- [ ] recipient address is guaranteed to fit in a windowed envolope (DIN 5008)
+- [ ] QR Code for easier banking transactions
 
-So it is very likely that you have to adapt the template to your use case. PRs that make the template usable by a wider audience are welcome.
 
-## Building
+## Disclaimer
 
-For compiling the PDF file just run
-
-```
-typst compile invoice.typ invoice.pdf
-```
+This template doesn't constitute legal advice. Please check for yourself wether it fulfills your legal requirements!
