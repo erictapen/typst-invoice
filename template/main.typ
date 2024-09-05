@@ -21,7 +21,7 @@
   ),
   // Bank account
   (
-    name: "Todd Name", bank: "Deutsche Postbank AG", iban: "DE 5463 2168 7213 2157 98", bic: "PBNKDEFF",
+    name: "Todd Name", bank: "Deutsche Postbank AG", iban: "DE89370400440532013000", bic: "PBNKDEFF",
   ), 
   // Umsatzsteuersatz (VAT)
   vat: 0.19,

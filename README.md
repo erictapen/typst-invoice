@@ -14,8 +14,8 @@ This template should work well for freelancers and small companies in the german
 - [X] configurable VAT
 - [X] configurabe § 19 UStG (Kleinunternehmerregelung) note
 - [X] employs both lining and old-style number types, depending on the application
+- [X] [EPC QR Code](https://en.wikipedia.org/wiki/EPC_QR_code) for easier banking transactions
 - [ ] recipient address is guaranteed to fit in a windowed envolope (DIN 5008)
-- [ ] QR Code for easier banking transactions
 
 
 ## Disclaimer
