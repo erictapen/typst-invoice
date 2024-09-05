@@ -2,6 +2,8 @@
 
 A template for writing invoices, inspired by the [beautiful LaTeX template by @mrzool.](https://github.com/mrzool/invoice-boilerplate/)
 
+![](thumbnail.png)
+
 
 ## Scope
 
