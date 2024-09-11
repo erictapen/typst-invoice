@@ -3,7 +3,7 @@
 A template for writing invoices, inspired by the [beautiful LaTeX template by @mrzool.](https://github.com/mrzool/invoice-boilerplate/)
 
 ```typ
-#import "@preview/german-invoice:0.2.0": invoice
+#import "@preview/classy-german-invoice:0.2.0": invoice
 
 #show: invoice(
   // Invoice number
