@@ -133,7 +133,7 @@
 
     #v(1em)
 
-    Mit freundlichen Grüßen,
+    Mit freundlichen Grüßen
 
     #v(1em)
 
