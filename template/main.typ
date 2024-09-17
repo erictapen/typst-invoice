@@ -13,7 +13,13 @@
   ),
   // Author
   (
-    name: "Kerstin Humm", street: "Straße der Privatsphäre und Stille 1", zip: "54321", city: "Potsdam", tax_nr: "12345/67890",
+    name: "Kerstin Humm",
+    street: "Straße der Privatsphäre und Stille 1",
+    zip: "54321",
+    city: "Potsdam",
+    tax_nr: "12345/67890",
+    // optional signature, can be omitted
+    signature: image("example_signature.png", width: 5em)
   ),
   // Recipient
   (

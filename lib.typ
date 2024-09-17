@@ -98,7 +98,7 @@
     )
   ]
 
-  v(3em)
+  v(2em)
 
   [
     #set text(size: 0.8em)
@@ -131,14 +131,14 @@
   [
     Steuernummer: #author.tax_nr
 
-    #v(1em)
+    #v(0.5em)
 
     Mit freundlichen Grüßen
 
-    #if author.signature == none [
-      #v(1em)
+    #if "signature" in author [
+      #scale(origin: left, x: 400%, y: 400%, author.signature)
     ] else [
-      #image(author.signature.path, width: author.signature.width)
+      #v(1em)
     ]
 
     #author.name
