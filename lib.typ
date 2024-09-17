@@ -135,7 +135,11 @@
 
     Mit freundlichen Grüßen,
 
-    #v(1em)
+    #if author.signature == none [
+      #v(1em)
+    ] else [
+      #image(author.signature.path, width: author.signature.width)
+    ]
 
     #author.name
   ]
