@@ -133,7 +133,7 @@
 
     #v(1em)
 
-    Mit freundlichen Grüßen,
+    Mit freundlichen Grüßen
 
     #if author.signature == none [
       #v(1em)
