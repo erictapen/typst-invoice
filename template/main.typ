@@ -8,8 +8,13 @@
   // Items
   (
     (
-      description: "The first service provided. The first service provided. The first service provided", price: 200,
-    ), (description: "The second service provided", price: 150.2),
+      description: "The first service provided. The first service provided. The first service provided",
+      price: 200,
+    ),
+    (
+      description: "The second service provided",
+      price: 150.2
+    ),
   ),
   // Author
   (
@@ -23,11 +28,20 @@
   ),
   // Recipient
   (
-    name: "Erika Mustermann", street: "Musterallee", zip: "12345", city: "Musterstadt",
+    name: "Erika Mustermann",
+    street: "Musterallee",
+    zip: "12345",
+    city: "Musterstadt",
   ),
   // Bank account
   (
-    name: "Todd Name", bank: "Deutsche Postbank AG", iban: "DE89370400440532013000", bic: "PBNKDEFF",
+    name: "Todd Name",
+    bank: "Deutsche Postbank AG",
+    iban: "DE89370400440532013000",
+    bic: "PBNKDEFF",
+    // There is currently only one gendered term in this template.
+    // You can overwrite it, or omit it and just choose the default.
+    gender: (account_holder: "Kontoinhaberin")
   ),
   // Umsatzsteuersatz (VAT)
   vat: 0.19,

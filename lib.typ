@@ -122,7 +122,9 @@
   grid(columns: (1fr, 1fr), gutter: 1em, align: top, [
     #set par(leading: 0.40em)
     #set text(number-type: "lining")
-    Kontoinhaberin: #bank-account.name \
+    #(bank-account
+      .at("gender", default: (:))
+      .at("account_holder", default: "Kontoinhaberin")): #bank-account.name \
     Kreditinstitut: #bank-account.bank \
     IBAN: *#iban(bank-account.iban)* \
     BIC: #bank-account.bic
