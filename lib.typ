@@ -84,14 +84,27 @@
   [
     #set text(number-type: "lining")
     #gridx(
-      columns: (auto, 10fr, auto), align: ((column, row) => if column == 1 { left } else { right }), hlinex(stroke: (thickness: 0.5pt)), [*Pos.*], [*Beschreibung*], [*Preis*], hlinex(), ..items, hlinex(), [], [
+      columns: (auto, 10fr, auto),
+      align: ((column, row) => if column == 1 { left } else { right }),
+      hlinex(stroke: (thickness: 0.5pt)),
+      [*Pos.*], [*Beschreibung*], [*Preis*], hlinex(),
+      ..items, hlinex(),
+      [], [
         #set align(end)
         Summe:
-      ], [#format_currency((1.0 - vat) * total)€], hlinex(start: 2), [], [
-        #set text(number-type: "old-style")
-        #set align(end)
-        #str(vat * 100)% Mehrwertsteuer:
-      ], [#format_currency(vat * total)€], hlinex(start: 2), [], [
+      ], [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€], hlinex(start: 2),
+      if not kleinunternehmer [
+        [],
+        [
+          #set text(number-type: "old-style")
+          #set align(end)
+          #str(vat * 100)% Mehrwertsteuer:
+        ],
+        [#format_currency(vat * total)€],
+        hlinex(start: 2),
+        [],
+      ] else [ ],
+      [
         #set align(end)
         *Gesamt:*
       ], [*#format_currency(total)€*], hlinex(start: 2),

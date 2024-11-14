@@ -1,4 +1,4 @@
-#import "@preview/classy-german-invoice:0.3.0": invoice
+#import "@preview/classy-german-invoice:0.3.1": invoice
 
 #show: invoice(
   // Invoice number
