@@ -40,7 +40,7 @@
   }
 
 
-  // Uses the values from data. If a value is not set, it is take from parameters as default.
+  // Uses the values from data. If no value is set, it is taken from parameters as default.
   if data != none {
     invoice-nr = data.at("invoice-nr", default: invoice-nr)
     invoice-date = if data.at("invoice-date") != none {
