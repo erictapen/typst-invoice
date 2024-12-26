@@ -5,22 +5,65 @@
 // Generates an invoice
 #let invoice(
   // The invoice number
-  invoice-nr,
+  invoice-nr: none,
   // The date on which the invoice was created
-  invoice-date,
+  invoice-date: none,
   // A list of items
-  items,
+  items: (),
   // Name and postal address of the author
-  author,
+  author: (:),
   // Name and postal address of the recipient
-  recipient,
+  recipient: (:),
   // Name and bank account details of the entity receiving the money
-  bank-account,
+  bank-account: (:),
+  // data to use instead of parameters given to this function
+  data: none,
   // Optional VAT
   vat: 0.19,
   // Check if the german § 19 UStG applies
   kleinunternehmer: false,
 ) = {
+
+  let parse-date = (date-str) => {
+    let parts = date-str.split("-")
+    if parts.len() != 3 {
+      panic(
+        "Invalid date string: " + date-str + "\n" +
+        "Expected format: YYYY-MM-DD"
+      )
+    }
+    datetime(
+      year: int(parts.at(0)),
+      month: int(parts.at(1)),
+      day: int(parts.at(2)),
+    )
+  }
+
+
+  // Uses the values from data. If a value is not set, it is take from parameters as default.
+  if data != none {
+    invoice-nr = data.at("invoice-nr", default: invoice-nr)
+    invoice-date = if data.at("invoice-date") != none {
+      parse-date(data.at("invoice-date"))
+    } else {
+      invoice-date
+    }
+    items = data.at("items", default: items)
+    author = if data.author != none {
+      author = data.author
+      if author.signature != none {
+        author.signature = image(author.signature, width: 5em)
+      }
+      author
+    } else {
+      author
+    }
+    recipient = data.at("recipient", default: recipient)
+    bank-account = data.at("bank-account")
+    vat = data.at("vat", default: vat)
+    kleinunternehmer = data.at("kleinunternehmer", default: kleinunternehmer)
+  }
+
   set text(lang: "de", region: "DE")
 
   set page(paper: "a4", margin: (x: 20%, y: 20%, top: 20%, bottom: 20%))
