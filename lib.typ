@@ -87,12 +87,16 @@
       columns: (auto, 10fr, auto),
       align: ((column, row) => if column == 1 { left } else { right }),
       table.hline(stroke: (thickness: 0.5pt)),
-      [*Pos.*], [*Beschreibung*], [*Preis*], table.hline(),
+      [*Pos.*], [*Beschreibung*], [*Preis*],
+      table.hline(),
       ..items, table.hline(),
-      [], [
+      [],
+      [
         #set align(end)
         Summe:
-      ], [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€], table.hline(start: 2),
+      ],
+      [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€],
+      table.hline(start: 2),
       if not kleinunternehmer [
         [],
         [
@@ -107,7 +111,9 @@
       [
         #set align(end)
         *Gesamt:*
-      ], [*#format_currency(total)€*], table.hline(start: 2),
+      ],
+      [*#format_currency(total)€*],
+      table.hline(start: 2),
     )
   ]
 
