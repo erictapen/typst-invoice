@@ -1,4 +1,3 @@
-#import "@preview/tablex:0.0.8": gridx, hlinex
 #import "@preview/cades:0.3.0": qr-code
 #import "@preview/ibanator:0.1.0": iban
 
@@ -83,16 +82,21 @@
 
   [
     #set text(number-type: "lining")
-    #gridx(
+    #table(
+      stroke: none,
       columns: (auto, 10fr, auto),
       align: ((column, row) => if column == 1 { left } else { right }),
-      hlinex(stroke: (thickness: 0.5pt)),
-      [*Pos.*], [*Beschreibung*], [*Preis*], hlinex(),
-      ..items, hlinex(),
-      [], [
+      table.hline(stroke: (thickness: 0.5pt)),
+      [*Pos.*], [*Beschreibung*], [*Preis*],
+      table.hline(),
+      ..items, table.hline(),
+      [],
+      [
         #set align(end)
         Summe:
-      ], [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€], hlinex(start: 2),
+      ],
+      [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€],
+      table.hline(start: 2),
       if not kleinunternehmer [
         [],
         [
@@ -101,13 +105,15 @@
           #str(vat * 100)% Mehrwertsteuer:
         ],
         [#format_currency(vat * total)€],
-        hlinex(start: 2),
+        table.hline(start: 2),
         [],
       ] else [ ],
       [
         #set align(end)
         *Gesamt:*
-      ], [*#format_currency(total)€*], hlinex(start: 2),
+      ],
+      [*#format_currency(total)€*],
+      table.hline(start: 2),
     )
   ]
 
