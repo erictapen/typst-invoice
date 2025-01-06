@@ -15,6 +15,10 @@
   recipient,
   // Name and bank account details of the entity receiving the money
   bank-account,
+  // The text to display below the items
+  invoice-text: "Vielen Dank für die Zusammenarbeit. Die Rechnungssumme überweisen Sie bitte
+    innerhalb von 14 Tagen ohne Abzug auf mein unten genanntes Konto unter Nennung
+    der Rechnungsnummer.",
   // Optional VAT
   vat: 0.19,
   // Check if the german § 19 UStG applies
@@ -121,10 +125,7 @@
 
   [
     #set text(size: 0.8em)
-    Vielen Dank für die Zusammenarbeit. Die Rechnungssumme überweisen Sie bitte
-    innerhalb von 14 Tagen ohne Abzug auf mein unten genanntes Konto unter Nennung
-    der Rechnungsnummer.
-
+    #invoice-text
     #if kleinunternehmer [
       Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
     ]
