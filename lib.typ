@@ -15,6 +15,8 @@
   recipient,
   // Name and bank account details of the entity receiving the money
   bank-account,
+  // The date when the service or the delivery happend
+  service-date: none,
   // The text to display below the items
   invoice-text: "Vielen Dank für die Zusammenarbeit. Die Rechnungssumme überweisen Sie bitte
     innerhalb von 14 Tagen ohne Abzug auf mein unten genanntes Konto unter Nennung
@@ -49,6 +51,21 @@
       s
     }
   }
+
+  let months = (
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember"
+    )
 
   set text(number-type: "old-style")
 
@@ -125,7 +142,12 @@
 
   [
     #set text(size: 0.8em)
-    #invoice-text
+    #invoice-text\ \
+    #if service-date == none [
+      Das Leistungs- bzw. Lieferdatum entspricht dem Rechnungsdatum.\
+    ] else [
+      Leistung bzw. Lieferung im *#months.at(service-date.month() -1) #service-date.year()*.\
+    ]
     #if kleinunternehmer [
       Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
     ]
