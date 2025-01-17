@@ -56,6 +56,7 @@
     *#author.name* •
     #author.street •
     #author.zip #author.city
+    #if "country" in author [• #author.country ] else []
   ]
 
   v(1em)
@@ -65,8 +66,8 @@
     #set text(size: 1.2em)
     #recipient.name \
     #recipient.street \
-    #recipient.zip
-    #recipient.city
+    #recipient.zip #recipient.city \
+    #if "country" in recipient [#recipient.country ] else []
   ]
 
   v(4em)
