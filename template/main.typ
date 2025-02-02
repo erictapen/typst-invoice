@@ -1,4 +1,4 @@
-#import "@preview/classy-german-invoice:0.3.1": invoice
+#import "../lib.typ": invoice
 
 #show: invoice(
   // Invoice number
@@ -13,7 +13,7 @@
     ),
     (
       description: "The second service provided",
-      price: 150.2
+      price: 150.2,
     ),
   ),
   // Author
@@ -24,7 +24,7 @@
     city: "Potsdam",
     tax_nr: "12345/67890",
     // optional signature, can be omitted
-    signature: image("example_signature.png", width: 5em)
+    signature: image("example_signature.png", width: 5em),
   ),
   // Recipient
   (
@@ -41,8 +41,9 @@
     bic: "PBNKDEFF",
     // There is currently only one gendered term in this template.
     // You can overwrite it, or omit it and just choose the default.
-    gender: (account_holder: "Kontoinhaberin")
+    gender: (account_holder: "Kontoinhaberin"),
   ),
+  // service-date: datetime(year: 2024, month: 09, day: 01),
   // Umsatzsteuersatz (VAT)
   vat: 0.19,
   kleinunternehmer: true,
