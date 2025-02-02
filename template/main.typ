@@ -4,7 +4,7 @@
   // Invoice number
   "2023-001",
   // Invoice date
-  datetime(year: 2024, month: 09, day: 03),
+  issuing-date: datetime(year: 2024, month: 09, day: 03),
   // Items
   (
     (
@@ -43,6 +43,9 @@
     // You can overwrite it, or omit it and just choose the default.
     gender: (account_holder: "Kontoinhaberin")
   ),
+  // A text that will be evaluated to markup.
+  invoice-text: "Vielen Dank für die Zusammenarbeit. Die Rechnungssumme überweisen Sie bitte
+    bis zum *#due-date* ohne Abzug auf mein unten genanntes Konto unter Nennung der Rechnungsnummer.",
   // Umsatzsteuersatz (VAT)
   vat: 0.19,
   kleinunternehmer: true,
