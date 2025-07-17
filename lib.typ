@@ -23,6 +23,8 @@
   vat: 0.19,
   // Check if the german § 19 UStG applies
   kleinunternehmer: false,
+  // Is the price of items including Vat or excluding vat? Default is B2C, inclusive.
+  includes-vat: true,
 ) = {
   set text(lang: "de", region: "DE")
 
@@ -78,10 +80,36 @@
     #author.city, *#invoice-date.display("[day].[month].[year]")*
   ])
 
-  let total = items.map((item) => item.price).sum()
+  let base_price_f = if kleinunternehmer {
+    1.0
+  } else if includes-vat {
+    1.0 / (1.0 + vat)
+  } else {
+    1.0
+  }
+
+  let total_f = if kleinunternehmer {
+    1.0
+  } else if includes-vat {
+    1.0
+  } else {
+    1.0 + vat
+  }
+
+  let vat_f = if kleinunternehmer {
+    0.0
+  } else if includes-vat {
+    vat / (1.0 + vat)
+  } else {
+    vat
+  }
+
+  let base_price = base_price_f * items.map((item) => item.price).sum()
+  let total_vat = items.map((item) => item.price * vat_f).sum()
+  let total = items.map((item) => item.price * total_f).sum()
 
   let items = items.enumerate().map(
-    ((id, item)) => ([#str(id + 1).], [#item.description], [#format_currency(item.price)€],),
+    ((id, item)) => ([#str(id + 1).], [#item.description], [#format_currency(item.price * base_price_f)€],),
   ).flatten()
 
   [
@@ -99,7 +127,7 @@
         #set align(end)
         Summe:
       ],
-      [#format_currency(if kleinunternehmer {total} else {(1.0 - vat) * total})€],
+      [#format_currency(base_price)€],
       table.hline(start: 2),
       ..if not kleinunternehmer {(
         [],
@@ -108,7 +136,7 @@
           #set align(end)
           #str(vat * 100)% Mehrwertsteuer:
         ],
-        [#format_currency(vat * total)€],
+        [#format_currency(total_vat)€],
         table.hline(start: 2),
         [],
       )} else {([], [], [], [])},
