@@ -30,7 +30,7 @@
 ) = {
   set text(lang: "de", region: "DE")
 
-  set page(paper: "a4", margin: (x: 20%, y: 20%, top: 20%, bottom: 20%))
+  set page(paper: "a4", margin: (x: 20%, y: 20%, top: 20%, bottom: 10%))
 
   // Typst can't format numbers yet, so we use this from here:
   // https://github.com/typst/typst/issues/180#issuecomment-1484069775
@@ -184,11 +184,9 @@
     ]
   )
 
+  v(2em)
+
   [
-    Steuernummer: #author.tax_nr
-
-    #v(0.5em)
-
     Mit freundlichen Grüßen
 
     #if "signature" in author [
@@ -198,5 +196,8 @@
     ]
 
     #author.name
+
+    #set text(size: 0.8em)
+    Steuernummer: #author.tax_nr
   ]
 }
