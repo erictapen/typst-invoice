@@ -170,16 +170,19 @@
     "BCD\n" + "002\n" + "1\n" + "SCT\n" + bank-account.bic + "\n" + bank-account.name + "\n" + bank-account.iban + "\n" + "EUR" + format_currency(total, locale: "en") + "\n" + "\n" + invoice-nr + "\n" + "\n" + "\n"
   )
 
-  grid(columns: 2, gutter: 1em, align: top, [
-    #set par(leading: 0.40em)
-    #set text(number-type: "lining")
-    #(bank-account
-      .at("gender", default: (:))
-      .at("account_holder", default: "Kontoinhaberin")): #bank-account.name \
-    Kreditinstitut: #bank-account.bank \
-    IBAN: *#iban(bank-account.iban)* \
-    BIC: #bank-account.bic
-  ], qr-code(epc-qr-content, height: 4em))
+  grid(columns: 2, gutter: 1em, align: top,
+    qr-code(epc-qr-content, height: 4em),
+    [
+      #set par(leading: 0.40em)
+      #set text(number-type: "lining")
+      #(bank-account
+        .at("gender", default: (:))
+        .at("account_holder", default: "Kontoinhaberin")): #bank-account.name \
+      Kreditinstitut: #bank-account.bank \
+      IBAN: *#iban(bank-account.iban)* \
+      BIC: #bank-account.bic
+    ]
+  )
 
   [
     Steuernummer: #author.tax_nr
