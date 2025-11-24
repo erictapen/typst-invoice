@@ -1,4 +1,4 @@
-#import "@preview/cades:0.3.0": qr-code
+#import "@preview/cades:0.3.1": qr-code
 #import "@preview/ibanator:0.1.0": iban
 
 // Generates an invoice
