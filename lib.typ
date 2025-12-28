@@ -5,8 +5,8 @@
 #let invoice(
   // The invoice number
   invoice-nr,
-  // The date on which the invoice was created
-  invoice-date,
+  // The date on which the invoice was created or issued. Default is today
+  issuing-date: datetime.today(),
   // A list of items
   items,
   // Name and postal address of the author
@@ -15,10 +15,13 @@
   recipient,
   // Name and bank account details of the entity receiving the money
   bank-account,
-  // The text to display below the items
+  // A plain string that will be evaluated as markup and displayed below the invoice items.
+  // Possible variabes:
+  //   - due-date
   invoice-text: "Vielen Dank für die Zusammenarbeit. Die Rechnungssumme überweisen Sie bitte
-    innerhalb von 14 Tagen ohne Abzug auf mein unten genanntes Konto unter Nennung
-    der Rechnungsnummer.",
+    bis zum *#due-date* ohne Abzug auf mein unten genanntes Konto unter Nennung der Rechnungsnummer.",
+  // Days until the invoice should be paid
+  due-days: 14,
   // Optional VAT
   vat: 0.19,
   // Check if the german § 19 UStG applies
@@ -52,6 +55,11 @@
     }
   }
 
+  let due_date(issuing-date, days) = {
+    issuing-date + duration(days: days)
+  }
+  let due-date = due_date(issuing-date, due-days)
+
   set text(number-type: "old-style")
 
   smallcaps[
@@ -77,7 +85,7 @@
     Rechnung \##invoice-nr
   ], [
     #set align(right)
-    #author.city, *#invoice-date.display("[day].[month].[year]")*
+    #author.city, *#issuing-date.display("[day].[month].[year]")*
   ])
 
   let base_price_f = if kleinunternehmer {
@@ -153,7 +161,7 @@
 
   [
     #set text(size: 0.8em)
-    #invoice-text
+    #eval(invoice-text, mode: "markup", scope: (due-date: due-date.display("[day].[month].[year]")))
     #if kleinunternehmer [
       Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.
     ]
